@@ -1,49 +1,79 @@
+// Importa o framework Express, que é usado para criar o servidor
 const express = require('express');
+
+// Importa o módulo 'path' do Node.js, que fornece utilitários para lidar com caminhos de arquivos e diretórios
 const path = require('path');
 
+// Cria uma instância do aplicativo Express
 const app = express();
-const port = 3000;
 
-// Configuração dos middlewares nativos do Express
+// Define a porta em que o servidor irá ouvir as solicitações (3000 neste caso)
+const PORT = 4000;
+
+// Variável para armazenar as contagens de respostas dos usuários
+let respostas = { A: 0, B: 0, C: 0 };
+
+// Middleware para analisar corpos de solicitações URL-encoded e JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Middleware para servir arquivos estáticos, como arquivos HTML, CSS e JavaScript
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
-let counts = { A: 0, B: 0, C: 0 };
+// Rotas para servir as páginas de perguntas (de 1 a 13)
+for (let i = 1; i <= 13; i++) {
+    // Define uma rota para cada pergunta, onde o número da pergunta é dinâmico (ex: /pergunta1, /pergunta2, etc.)
+    app.get(`/pergunta${i}`, (req, res) => res.sendFile(path.join(__dirname, 'views', `pergunta${i}.html`)));
+}
 
+// Rotas para servir as páginas de resultados
+app.get('/resultadoA', (req, res) => res.sendFile(path.join(__dirname, 'views', 'resultadoA.html')));
+app.get('/resultadoB', (req, res) => res.sendFile(path.join(__dirname, 'views', 'resultadoB.html')));
+app.get('/resultadoC', (req, res) => res.sendFile(path.join(__dirname, 'views', 'resultadoC.html')));
+
+// Rota para lidar com a resposta do formulário enviado pelo usuário
 app.post('/answer', (req, res) => {
+    // Obtém a resposta selecionada pelo usuário e a próxima pergunta a ser exibida a partir do corpo da solicitação
     const answer = req.body.answer;
-    if (counts.hasOwnProperty(answer)) {
-        counts[answer]++;
+    const nextQuestion = parseInt(req.body.nextQuestion);
+
+    // Incrementa a contagem da resposta selecionada
+    if (respostas[answer] !== undefined) {
+        respostas[answer]++;
     }
-    const nextQuestion = req.body.nextQuestion;
-    if (nextQuestion <= 13) {
-        res.redirect(`/pergunta${nextQuestion}`);
+
+    // Redireciona para a próxima pergunta ou para a página de resultado final
+    if (nextQuestion > 13) {
+        // Determina a resposta mais escolhida e redireciona para a página de resultado correspondente
+        const maxAnswer = Object.keys(respostas).reduce((a, b) => respostas[a] > respostas[b] ? a : b);
+        return res.redirect(`/resultado${maxAnswer}`);
     } else {
-        res.redirect('/result');
+        return res.redirect(`/pergunta${nextQuestion}`);
     }
 });
 
+// Rota para determinar o resultado final
 app.get('/result', (req, res) => {
     let maxCount = -1;
     let maxAnswer = '';
-    for (let key in counts) {
-        if (counts[key] > maxCount) {
-            maxCount = counts[key];
+    // Itera sobre as contagens de respostas para determinar a resposta mais escolhida
+    for (let key in respostas) {
+        if (respostas[key] > maxCount) {
+            maxCount = respostas[key];
             maxAnswer = key;
         }
     }
-    res.redirect(`/resultadoNivel1/resultadoNivel1-${maxAnswer}.html`);
+    // Redireciona para a página de resultado correspondente à resposta mais escolhida
+    res.redirect(`/resultado${maxAnswer}.html`);
 });
 
+// Redireciona para a primeira pergunta ao acessar a raiz do servidor
 app.get('/', (req, res) => {
     res.redirect('/pergunta1');
 });
 
-for (let i = 1; i <= 13; i++) {
-    app.get(`/pergunta${i}`, (req, res) => res.sendFile(path.join(__dirname, 'views', `pergunta${i}.html`)));
-}
-
-app.listen(port, () => {
-    console.log(`Quiz app listening at http://localhost:${port}`);
+// Inicia o servidor e faz com que ele comece a ouvir as solicitações na porta especificada
+app.listen(PORT, () => {
+    console.log(`Quiz app listening at http://localhost:${PORT}`);
 });
