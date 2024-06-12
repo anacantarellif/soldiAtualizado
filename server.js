@@ -70,10 +70,13 @@ app.get('/result', (req, res) => {
 
 // Redireciona para a primeira pergunta ao acessar a raiz do servidor
 app.get('/', (req, res) => {
-    res.redirect('/pergunta1');
+    res.redirect('/home.html');
 });
+// app.get('/', (req, res) => {
+//     res.redirect('/pergunta1');
+// });
 
-// Inicia o servidor e faz com que ele comece a ouvir as solicitações na porta especificada
-app.listen(PORT, () => {
-    console.log(`Quiz app listening at http://localhost:${PORT}`);
+// Inicia o servidor e faz com que ele comece a ouvir as solicitações na porta especificada, o 0.0.0.0 serve para ele ouvir em outros tipos de dispositivos, não apenas no localhost
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`SOLDI app listening at http://localhost:${PORT}, SOLDI app listening at port ${PORT}`);
 });
