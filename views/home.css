@@ -1,0 +1,100 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --laranja: #C93400;
+    --branco: #FAF4FA;
+}
+
+body{
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* fonte */
+    color: var(--branco);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 16;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    font-size: 16px;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    background-color: var(--laranja);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 50%;
+    padding-right: 50%;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    
+}
+
+#nivel1{
+    position: relative;
+    left: 20%;
+    
+}
+#nivel2{
+    position: relative;
+    right: 30%;
+    
+}
+#nivel3{
+    position: relative;
+    right: 30%;
+    
+}
+#nivel4{
+    position: relative;
+    left: 20%;
+    
+}
+
+img{
+    width: 6rem;
+    height: 6rem;
+}
+
+svg{
+    display: flex;
+    flex-direction: column;
+    justify-items: right;
+    position: absolute;
+    left: 65%;
+    top: 50%;
+}
+
+h1{
+    font-size: 24px;
+    padding-bottom: 5%;
+}
+
+.icones{
+    width: 1.5rem;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--branco);
+
+}

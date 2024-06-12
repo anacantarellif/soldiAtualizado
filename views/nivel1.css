@@ -1,0 +1,212 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --laranja: #C93400;
+    --branco: #FAF4FA;
+}
+
+body{
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* fonte */
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 32;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    font-size: 1rem;
+    margin: 2rem;
+    
+}
+
+button{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius: 2rem;
+    border-color: var(--laranja);
+    cursor:pointer;
+    overflow: hidden; 
+    color: var(--laranja);
+    padding: 16px;
+    border-style: solid;
+    
+}
+
+.botoes{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 2rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+@keyframes loading {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* .progress {
+    background: #E7E7E7;
+    position: relative;
+    height: 8px;
+    width: 100%
+  }
+  
+  .progress::after {
+    animation: loading 6s infinite ease-in-out;
+    background: #897FBA;
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0
+  } */
+
+
+  
+  .progress{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 29px;
+    border-radius: 100px;
+    background: #BDBCBC;
+  }
+
+  
+  
+
+  .progress1{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 0%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress2{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 8.3%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress3{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 16%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress4{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 32%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress5{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 40%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress6{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 48%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress7{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 56%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress8{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 64%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress9{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 72%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress10{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 80%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress11{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 80%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress12{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 88%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+  .progress13{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 92%;
+    height: 29px;
+    border-radius: 100px;
+    background: #C93400;
+  }
+
+
+
+

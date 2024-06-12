@@ -1,0 +1,54 @@
+*{
+    margin: 0; 
+    padding: o;
+    box-sizing: border-box;
+}
+
+:root{
+    --laranja: #C93400;
+    --branco: #FAF4FA;
+}
+
+
+body{
+    background-color: var(--laranja);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    color: var(--branco);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 16;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    font-size: 16px;
+}
+
+img{
+    width: 80%;
+}
+
+main{
+    margin: 10%;
+}
+
+h1{
+    font-size: 24px;
+    padding-bottom: 5%;
+}
+
+button{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius: 2rem;
+    border-color: var(--branco);
+    cursor:pointer;
+    overflow: hidden; 
+    color: var(--branco);
+    width: 80%;
+    height: 40px;
+
+}
+
