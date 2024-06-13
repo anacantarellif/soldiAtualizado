@@ -4,11 +4,33 @@ const express = require('express');
 // Importa o módulo 'path' do Node.js, que fornece utilitários para lidar com caminhos de arquivos e diretórios
 const path = require('path');
 
+const mysql = require('mysql');
+
+
 // Cria uma instância do aplicativo Express
 const app = express();
 
 // Define a porta em que o servidor irá ouvir as solicitações (3000 neste caso)
 const PORT = 4000;
+
+
+// Configuração da conexão com o banco de dados
+const db = mysql.createConnection({
+    host: 'localhost',      // Endereço do servidor MySQL
+    user: 'root',    // Nome de usuário do banco de dados
+    password: 'root',  // Senha do banco de dados
+    database: 'soldi_db'    // Nome do banco de dados
+});
+
+// Conectar ao banco de dados
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Conectado ao banco de dados');
+});
+
+
 
 // Variável para armazenar as contagens de respostas dos usuários
 let respostas = { A: 0, B: 0, C: 0 };
